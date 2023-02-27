@@ -1,0 +1,68 @@
+{
+    "tables": {
+        "locations": {
+            "tableName": "locations",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "geometry": {
+                    "allowNull": false,
+                    "field": "geometry",
+                    "seqType": "Sequelize.GEOMETRY('POINT')"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "routes": {
+            "tableName": "routes",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "field": "id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "type": {
+                    "allowNull": false,
+                    "field": "type",
+                    "seqType": "Sequelize.STRING(10)"
+                },
+                "geometry": {
+                    "field": "geometry",
+                    "seqType": "Sequelize.GEOMETRY('LINESTRING')"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "field": "createdAt",
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "field": "updatedAt",
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        }
+    },
+    "path": "/home/new/Documents/route-api/migrations/_current.json",
+    "backupPath": "/home/new/Documents/route-api/migrations/_current_bak.json",
+    "exists": true,
+    "revision": 5
+}
