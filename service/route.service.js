@@ -9,28 +9,34 @@ const getRouteService = async () => {
   return data;
 };
 const distanceService = async () => {
-  const data = await locationModel.findAll();
-  getRoute(data)
-    .then(async (data) => {
-      const routeData = data
-        .filter((element) => {
-          return element !== undefined;
-        })
-        .map((v, k) => {
-          if (v) {
-            for (var i = 0; i < data.length; i++) {
-              if (v[i] !== 0) {
-                return { type:"Feature",geometry: { type: "LineString", coordinates: v[i] } };
+  const route = await routeModel.findAll();
+  if (route.length === 0) {
+    const data = await locationModel.findAll();
+
+    getRoute(data)
+      .then(async (data) => {
+        const routeData = data
+          .filter((element) => {
+            return element !== undefined;
+          })
+          .map((v, k) => {
+            if (v) {
+              for (var i = 0; i < data.length; i++) {
+                if (v[i] !== 0) {
+                  return {
+                    type: "Feature",
+                    geometry: { type: "LineString", coordinates: v[i] },
+                  };
+                }
               }
             }
-          }
-        });
-      console.log("--------------->", routeData.map(v=>v.geometry.coordinates));
-      await routeModel.bulkCreate(routeData);
-      // return data;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+          });
+        await routeModel.bulkCreate(routeData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+  return;
 };
 module.exports = { distanceService, getRouteService };

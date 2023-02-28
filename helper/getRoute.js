@@ -12,14 +12,13 @@ const getRoute = async (geometryData) => {
 
       const destinations = geometryData[i].geometry.coordinates;
       const query = await fetch(
-        `https://api.mapbox.com/directions/v5/mapbox/cycling/${start[0]},${start[1]};${destinations[0]},${destinations[1]}?geometries=geojson&access_token=${mapBoxKey}`,
+        `https://api.mapbox.com/directions/v5/mapbox/driving/${start[0]},${start[1]};${destinations[0]},${destinations[1]}?geometries=geojson&access_token=${mapBoxKey}`,
         { method: "GET" }
       );
       const json = await query.json();
       const data = json.routes[0];
       const { distance } = data;
       const route = data.geometry.coordinates;
-      console.log(route);
       if (a === 0 || a < i) {
         graph.push(0);
       } else {
@@ -52,8 +51,8 @@ const getRoute = async (geometryData) => {
         }
       })[0]
   );
-  // console.log("SSSSSSSSSSSSSs",shortestRoute);
-  console.log("===========>",nodeToNodeIndex);
+  console.log("SSSSSSSSSSSSSs",nodeToNodeIndex);
+  // console.log("===========>",nodeToNodeIndex);
   return shortestRoute;
 };
 module.exports = { getRoute };

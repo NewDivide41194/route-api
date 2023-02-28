@@ -9,8 +9,11 @@ const getLocationService = async () => {
 };
 
 const addLocation = async () => {
- await locationModel.bulkCreate(defaultPoints);
-
+  const data = await locationModel.findAll();
+  if (data.length === 0) {
+    await locationModel.bulkCreate(defaultPoints);
+  }
+  return;
 };
 
-module.exports = { getLocationService,addLocation };
+module.exports = { getLocationService, addLocation };

@@ -13,7 +13,7 @@ routes(app);
 db.sequelize.sync()
 
 const Port = process.env.SERVER_PORT || 3001;
-// addLocation()
+addLocation()
 distanceService()
 
 app.listen(Port, () => {
