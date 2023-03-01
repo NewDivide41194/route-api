@@ -1,19 +1,31 @@
 const { defaultPoints } = require("../constants");
-const db = require("../database/model");
+const {
+  findAllLocation,
+  addLocation,
+} = require("../database/provider/location.provider");
+const { deleteAllRoute } = require("../database/provider/route.provider");
 
-const locationModel = db.location;
 const getLocationService = async () => {
-  const data = await locationModel.findAll();
+  const data = await findAllLocation();
 
   return { features: data };
 };
 
-const addLocation = async () => {
-  const data = await locationModel.findAll();
+const addLocationService = async () => {
+  const data = await findAllLocation();
   if (data.length === 0) {
-    await locationModel.bulkCreate(defaultPoints);
+    await addLocation(defaultPoints);
   }
   return;
 };
 
-module.exports = { getLocationService, addLocation };
+const addCustomLocationService = async (data) => {
+  await addLocation(data);
+  return;
+};
+
+module.exports = {
+  getLocationService,
+  addLocationService,
+  addCustomLocationService,
+};
