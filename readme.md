@@ -1,6 +1,6 @@
 # ViaTick-Assignment
 
-- **Technology stack**: This project primarly used [NodeJs], [Javascript] and [Sequelize] for database.
+- **Technology stack**: This project primarly used NodeJs, Javascript and Sequelize for database.
 - **Status**: 1.1
 
 ## Dependencies
@@ -17,7 +17,7 @@
 - "sequelize-cli": "^6.6.0"
 
 ## Installation and Run
-In .env file, change NODE_ENV to [development] and update database information with local.
+In .env file, change NODE_ENV to development and update database information with local.
 
 ```bash
 npm install
@@ -47,7 +47,7 @@ MAPBOX_KEY="pk.eyJ1IjoiaGVpbi1odGV0IiwiYSI6ImNsZWpmeHl2YTA5cDMzcW52dXhxeGNwdnQif
 
 ## How to test the software
 
-In .env file, change NODE_ENV to [test] and update database information with local. Using [jest] JavaScript testing framework for the process.
+In .env file, change NODE_ENV to "test" and update database information with local. Using "jest" JavaScript testing framework for the process.
 
 ```bash
 npm run db:reset
